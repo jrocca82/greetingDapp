@@ -10,8 +10,10 @@ import "@typechain/hardhat";
 import { ethers } from "ethers";
 import "hardhat-gas-reporter";
 
-const defaultRpcUrl = "https://localhost:8545";
 const defaultEtherBalance = "100000000";
+const defaultKey =
+  "0000000000000000000000000000000000000000000000000000000000000001";
+const defaultRpcUrl = "https://localhost:8545";
 
 export default {
 	gasReporter: {
@@ -41,6 +43,10 @@ export default {
 			],
 			allowUnlimitedContractSize: false,
 		},
+		goerli: {
+			url: process.env.GOERLI_URL || defaultRpcUrl,
+			accounts: [process.env.PRIVATE_KEY || defaultKey]
+		  },
 	},
 	solidity: {
 		compilers: [
